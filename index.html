@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIEX - Outsourcing de Folha e Departamento Pessoal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Lighter background */
+        }
+        .header-bg {
+            background-color: transparent;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .header-scrolled {
+            background-color: #001f3f;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        /* Custom styles for modern sections */
+        .section-padding {
+            padding: 5rem 1.5rem; /* More vertical padding for sections */
+        }
+        .section-heading {
+            font-size: 3rem; /* Larger heading */
+            font-weight: 800; /* Extra bold */
+            color: #001f3f; /* Dark blue */
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        .section-subheading {
+            font-size: 1.25rem;
+            color: #4a5568;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button-primary {
+            background-color: #f59e0b; /* TIEX Yellow */
+            color: white;
+            font-weight: 700;
+            padding: 1rem 2.5rem;
+            border-radius: 0.75rem; /* More rounded */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+        }
+        .cta-button-primary:hover {
+            background-color: #d97706;
+            transform: translateY(-2px);
+        }
+        .feature-card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.08), 0 8px 15px -5px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.12), 0 10px 20px -8px rgba(0, 0, 0, 0.05);
+        }
+        .feature-icon {
+            font-size: 5rem; /* Increased font-size for bigger icons */
+            width: 7rem;
+            height: 7rem;
+            color: #001f3f; /* Dark blue for icons */
+            margin-bottom: 1.5rem;
+        }
+        .process-step {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2.5rem;
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .process-step:hover {
+            transform: translateY(-5px);
+        }
+        .process-number {
+            background-color: #001f3f;
+            color: white;
+            border-radius: 50%;
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-right: 2rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(0, 31, 63, 0.3);
+        }
+        .footer-bg {
+            background-color: #001f3f; 
+            color: #e2e8f0; 
+        }
+        .cta-button-header { 
+            background-color: white;
+            color: #001f3f; 
+            font-weight: 600;
+            padding: 0.5rem 1rem; 
+            border-radius: 0.375rem; 
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: 1px solid transparent; 
+            display: inline-block;
+        }
+        .cta-button-header:hover {
+            background-color: #f0f0f0; 
+            color: #001a33;
+        }
+        .search-icon-button {
+            padding: 0.5rem;
+            color: white;
+            transition: color 0.3s ease;
+        }
+        .search-icon-button:hover {
+            color: #d1d5db; 
+        }
+        .footer-icon {
+            width: 1.25rem; 
+            height: 1.25rem; 
+            margin-right: 0.5rem; 
+            fill: currentColor;
+        }
+        .social-icon {
+            width: 2rem; 
+            height: 2rem; 
+            transition: opacity 0.3s ease;
+        }
+        .social-icon:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header id="main-header" class="header-bg fixed w-full z-20 top-0 left-0 border-b-4 border-amber-400">
+        <nav class="container mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="https://tiex.com.br/" target="_blank" rel="noopener noreferrer" aria-label="Página inicial da TIEX">
+                        <img class="h-8 w-auto" src="https://res.cloudinary.com/dt9bq18tq/image/upload/v1749174765/logo_white_ql2g1h.png" alt="Logo TIEX" onerror="this.onerror=null; this.src='https://placehold.co/100x32/001f3f/FFFFFF?text=TIEX'; this.alt='Logo TIEX (fallback)';">
+                    </a>
+                </div>
+                <div class="hidden md:flex md:items-center md:space-x-2 lg:space-x-3">
+                    <a href="https://tiex.com.br/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 px-2 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="https://tiex.com.br/quem-somos/sobre-nos/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 px-2 py-2 rounded-md text-sm font-medium">Institucional</a>
+                    <a href="https://tiex.com.br/servicos/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 px-2 py-2 rounded-md text-sm font-medium">Serviços</a>
+                    <a href="https://tiex.com.br/responsabilidade-social/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 px-2 py-2 rounded-md text-sm font-medium">Responsabilidade Social</a>
+                    <a href="https://tiex.com.br/nosso-time/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 px-2 py-2 rounded-md text-sm font-medium">Faça parte do nosso Time</a>
+                    <a href="https://tiex.com.br/faq/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 px-2 py-2 rounded-md text-sm font-medium">FAQ</a>
+                    <button aria-label="Buscar" class="search-icon-button ml-2">
+                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg>
+                    </button>
+                    <a href="https://tiex.com.br/fale-conosco/" class="cta-button-header ml-3 text-sm">Fale Conosco</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-300 hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Abrir menu principal</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div class="md:hidden hidden header-bg" id="mobile-menu"> 
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="https://tiex.com.br/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 hover:bg-blue-900 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="https://tiex.com.br/quem-somos/sobre-nos/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 hover:bg-blue-900 block px-3 py-2 rounded-md text-base font-medium">Institucional</a>
+                <a href="https://tiex.com.br/servicos/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 hover:bg-blue-900 block px-3 py-2 rounded-md text-base font-medium">Serviços</a>
+                <a href="https://tiex.com.br/responsabilidade-social/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 hover:bg-blue-900 block px-3 py-2 rounded-md text-base font-medium">Responsabilidade Social</a>
+                <a href="https://tiex.com.br/nosso-time/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 hover:bg-blue-900 block px-3 py-2 rounded-md text-base font-medium">Faça parte do nosso Time</a>
+                <a href="https://tiex.com.br/faq/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 hover:bg-blue-900 block px-3 py-2 rounded-md text-base font-medium">FAQ</a>
+                <a href="https://tiex.com.br/fale-conosco/" class="cta-button-header block w-full text-center mt-2 py-2 text-base">Fale Conosco</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative overflow-hidden py-20 md:py-32" style="background-image: url('https://res.cloudinary.com/dt9bq18tq/image/upload/v1755660937/4_qgk3cj.png'); background-size: cover; background-position: center;">
+        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between">
+            <div class="text-center md:text-left md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6 drop-shadow-lg text-blue-900">
+                    Outsourcing de Folha e DP: <span class="text-amber-400">Sua Gestão de RH Simplificada</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 leading-relaxed text-blue-900">
+                    <strong>Maximize a eficiência e segurança do seu Departamento Pessoal. Foco total no seu negócio, nós cuidamos da burocracia.</strong>
+                </p>
+                <a href="https://tiex.com.br/fale-conosco/" class="cta-button-primary text-xl">Fale com um Especialista</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="section-padding bg-white text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="section-heading">Por Que Escolher o Outsourcing de RH?</h2>
+            <p class="section-subheading">
+                A gestão de folha de pagamento e departamento pessoal é complexa e demanda atenção constante. A TIEX oferece uma solução completa para que sua empresa possa focar no que realmente importa: seu crescimento.
+            </p>
+            <div class="grid md:grid-cols-2 gap-12 mt-12">
+                <div class="feature-card">
+                    <!-- Icone para Redução de Custos e Burocracia -->
+                    <i class="fas fa-chart-pie feature-icon"></i>
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Redução de Custos e Burocracia</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Elimine os custos internos com equipe, softwares e infraestrutura. Transforme despesas fixas em variáveis, otimizando seu fluxo de caixa e liberando recursos para investimentos estratégicos.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <!-- Icone para Conformidade Legal e Segurança Total -->
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Conformidade Legal e Segurança Total</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Nossa equipe de especialistas garante total conformidade com a legislação trabalhista e previdenciária, minimizando riscos de multas e passivos. Seus dados são protegidos com as mais altas certificações de segurança.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="beneficios" class="section-padding bg-gray-100 text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="section-heading">Vantagens Exclusivas da TIEX</h2>
+            <p class="section-subheading">
+                Com a TIEX, você não apenas terceiriza, você eleva o nível da sua gestão de RH.
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                <div class="feature-card">
+                    <!-- Icone para Eficiência Operacional -->
+                    <i class="fas fa-cogs feature-icon"></i>
+                    <h3 class="text-xl font-semibold text-blue-800 mb-3">Eficiência Operacional</h3>
+                    <p class="text-gray-700">Processos otimizados e tecnologia avançada para uma gestão de folha e DP sem falhas.</p>
+                </div>
+                <div class="feature-card">
+                    <!-- Icone para Segurança de Dados -->
+                    <i class="fas fa-lock feature-icon"></i>
+                    <h3 class="text-xl font-semibold text-blue-800 mb-3">Segurança de Dados</h3>
+                    <p class="text-gray-700">Sistemas com certificações ISO 27001 e SOC 2 Type 2 garantem a proteção das suas informações.</p>
+                </div>
+                <div class="feature-card">
+                    <!-- Icone para Equipe Especializada -->
+                    <i class="fas fa-users-cog feature-icon"></i>
+                    <h3 class="text-xl font-semibold text-blue-800 mb-3">Equipe Especializada</h3>
+                    <p class="text-gray-700">Conte com profissionais experientes e atualizados nas últimas tendências e legislações de RH.</p>
+                </div>
+                <div class="feature-card">
+                    <!-- Icone para Escalabilidade Flexível -->
+                    <i class="fas fa-arrows-alt-h feature-icon"></i>
+                    <h3 class="text-xl font-semibold text-blue-800 mb-3">Escalabilidade Flexível</h3>
+                    <p class="text-gray-700">Nossos serviços se adaptam ao tamanho e às necessidades da sua empresa, crescendo junto com você.</p>
+                </div>
+                <div class="feature-card">
+                    <!-- Icone para Relatórios e Análises Completas -->
+                    <i class="fas fa-chart-line feature-icon"></i>
+                    <h3 class="text-xl font-semibold text-blue-800 mb-3">Relatórios e Análises Completas</h3>
+                    <p class="text-gray-700">Tenha acesso a dados e insights estratégicos para uma tomada de decisão mais assertiva.</p>
+                </div>
+                <div class="feature-card">
+                    <!-- Icone para Suporte Dedicado -->
+                    <i class="fas fa-headset feature-icon"></i>
+                    <h3 class="text-xl font-semibold text-blue-800 mb-3">Suporte Dedicado</h3>
+                    <p class="text-gray-700">Um canal direto com nossa equipe para tirar dúvidas e garantir a fluidez dos seus processos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="como-funciona" class="section-padding bg-white text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="section-heading">Nosso Processo de Outsourcing</h2>
+            <p class="section-subheading">
+                Entenda as etapas simples e transparentes para otimizar a gestão da sua folha e departamento pessoal com a TIEX.
+            </p>
+            <div class="max-w-4xl mx-auto mt-12">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <div class="text-left">
+                        <h3 class="text-2xl font-semibold text-blue-700 mb-2">Diagnóstico e Proposta Personalizada</h3>
+                        <p class="text-gray-700 leading-relaxed">Iniciamos com uma análise aprofundada das suas necessidades e processos atuais, seguida pela apresentação de uma proposta sob medida.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <div class="text-left">
+                        <h3 class="text-2xl font-semibold text-blue-700 mb-2">Implementação e Onboarding</h3>
+                        <p class="text-gray-700 leading-relaxed">Nossa equipe garante uma transição suave e eficiente, com a migração segura de dados e a integração dos sistemas.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <div class="text-left">
+                        <h3 class="text-2xl font-semibold text-blue-700 mb-2">Operação e Gestão Contínua</h3>
+                        <p class="text-gray-700 leading-relaxed">Assumimos todas as rotinas de folha e DP, garantindo precisão, pontualidade e conformidade com a legislação vigente.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <div class="text-left">
+                        <h3 class="text-2xl font-semibold text-blue-700 mb-2">Relatórios e Suporte Estratégico</h3>
+                        <p class="text-gray-700 leading-relaxed">Você recebe relatórios detalhados e conta com suporte especializado para dúvidas e decisões estratégicas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-16">
+                <a href="https://tiex.com.br/fale-conosco/" class="cta-button-primary text-xl px-10 py-4">Quero Simplificar Minha Gestão de RH</a>
+            </div>
+        </section>
+
+    <!-- Call to Action Section -->
+    <section id="contato" class="py-20 bg-blue-900 text-white"> 
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-amber-400">
+                Pronto para Transformar sua Gestão de RH?
+            </h2>
+            <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto text-white">
+                Entre em contato com a TIEX hoje mesmo e descubra como o outsourcing de folha e departamento pessoal pode impulsionar a eficiência e a segurança da sua empresa.
+            </p>
+            <div class="text-center">
+                <a href="https://tiex.com.br/fale-conosco/" class="cta-button-primary w-auto text-xl py-4 px-10">Fale Conosco</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-bg py-16 text-sm">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Coluna Site Menu -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Site Menu</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://tiex.com.br/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300">Home</a></li>
+                        <li><a href="https://tiex.com.br/quem-somos/sobre-nos/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300">Quem Somos</a></li>
+                        <li><a href="https://tiex.com.br/servicos/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300">Serviços</a></li>
+                        <li><a href="https://tiex.com.br/responsabilidade-social/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300">Responsabilidade Social</a></li>
+                        <li><a href="https://tiex.com.br/nosso-time/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300">Faça parte do nosso time</a></li>
+                        <li><a href="https://tiex.com.br/faq/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300">Faq</a></li>
+                        <li><a href="https://tiex.com.br/fale-conosco/" class="hover:text-gray-300">Contato</a></li>
+                        <li><a href="https://tiex.com.br/politica-de-privacidade/" class="hover:text-gray-300">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                <!-- Coluna Nossos Serviços -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Nossos serviços</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://tiex.com.br/servicos/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300">Outsourcing de Folha de Pagamento</a></li>
+                        <li><a href="https://tiex.com.br/servicos/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300">Outsourcing de Departamento Pessoal</a></li>
+                        <li><a href="https://tiex.com.br/servicos/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300">Consultoria em RH</a></li>
+                        <li><a href="https://tiex.com.br/servicos/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300">Compliance Trabalhista</a></li>
+                        <li><a href="https://tiex.com.br/servicos/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300">Planejamento de RH</a></li>
+                        <li><a href="https://tiex.com.br/servicos/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300">Auditoria de Folha</a></li>
+                        <li><a href="https://tiex.com.br/servicos/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300">Gestão de Benefícios</a></li>
+                    </ul>
+                </div>
+                <!-- Coluna Nossos Contatos -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Nossos contatos</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.003a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.003.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"></path></svg>
+                            <a href="tel:1144802000" class="hover:text-gray-300">11 4480-2000</a>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path><path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path></svg>
+                            <a href="mailto:contato@tiex.com.br" class="hover:text-gray-300">contato@tiex.com.br</a>
+                        </li>
+                        <li class="flex items-start mt-2">
+                            <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.145l.005-.002.007-.004.012-.007a5.852 5.852 0 00.24-.116l.006-.003.016-.01l.019-.012l.006-.004a5.186 5.186 0 00.413-.293l.004-.003.007-.005.013-.01.029-.023l.005-.004a4.505 4.505 0 001.076-.908c.346-.39.633-.82.848-1.284l.002-.005.004-.01c.19-.403.314-.833.373-1.29l.008-.06A6.113 6.113 0 0014.25 10c0-3.443-2.793-6.25-6.25-6.25S1.75 6.557 1.75 10c0 1.54.563 2.933 1.488 4.03l.004.005c.216.29.47.556.758.797l.003.003a5.186 5.186 0 00.413.293l.004.003.007.005.013.01.029-.023l.005-.004a4.505 4.505 0 001.076.908l.005.004.029.023.013.01.007.005.004.003a5.186 5.186 0 00.413.293l.006.004.019.012.016.01.006.003a5.852 5.852 0 00.24-.116l.012.007.007.004.005.002a5.741 5.741 0 00.281.145l.018.008.006.003.003.001zm-4.673-2.512a1 1 0 00-1.414-1.414L6.968 17.64a1 1 0 001.414 1.414l1.03-1.03zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                            <span>Doutor Chucri Zaidan, 1550 - Conjunto 2303<br>Vila São Francisco 04711-130 São Paulo - SP</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Coluna Siga-nos -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Siga-nos</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/company/tiex/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da TIEX" class="text-white">
+                            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/grupotiex?igsh=Ym05ZG9vNWNua3Bt" target="_blank" rel="noopener noreferrer" aria-label="Instagram da TIEX" class="text-white">
+                            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="https://wa.me/551144802000" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da TIEX" class="text-white">
+                            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.712-1.001zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.149-.173.198-.297.297-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.523.074-.797.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-xs">
+                   <p>&copy; 2024 TIEX. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script for mobile menu (kept from previous version)
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = menuButton.querySelector('svg:first-child');
+        const closeIcon = menuButton.querySelector('svg:last-child');
+
+        menuButton.addEventListener('click', () => {
+            const isExpanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
+            menuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            hamburgerIcon.classList.toggle('hidden');
+            closeIcon.classList.add('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(item => { 
+            item.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) { 
+                    menuButton.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.add('hidden');
+                    hamburgerIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                }
+            });
+        });
+
+        // Dynamic Header Scroll Effect
+        const header = document.getElementById('main-header');
+        const heroSection = document.getElementById('hero');
+
+        window.addEventListener('scroll', () => {
+            const heroHeight = heroSection.offsetHeight;
+            if (window.scrollY > heroHeight - 80) { // 80px is an arbitrary offset, can be adjusted
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+    </script>
+
+</body>
+</html>
